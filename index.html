@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Navbar with Top Banner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            padding-top: 120px;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(90deg, #ff758c, #ff7eb3);
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1050;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .hide-banner {
+            transform: translateY(-100%);
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background: transparent;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .navbar-custom.scrolled {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            transition: font-size 0.4s ease-in-out;
+        }
+
+        .navbar-custom.scrolled .navbar-brand {
+            font-size: 20px;
+        }
+
+        /* Navbar Links */
+        .nav-link {
+            position: relative;
+            color: rgb(24, 2, 2) !important;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #ff6f61;
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Content */
+        .content {
+            height: 200vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Banner -->
+    <!-- <div class="top-banner" id="topBanner">
+        🌟 Limited Time Offer: Get 50% Off on All Services! 🌟
+    </div> -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">Brand</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Scroll Down to See the Effects</h1>
+        <p>More content to enable scrolling...</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar-custom').addClass('scrolled');
+                    $('#topBanner').addClass('hide-banner');
+                } else {
+                    $('.navbar-custom').removeClass('scrolled');
+                    $('#topBanner').removeClass('hide-banner');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
